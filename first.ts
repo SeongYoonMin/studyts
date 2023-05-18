@@ -286,6 +286,17 @@ const optionalValues: optionalTypes = {
 function genericFunctions<T extends string | number>(x: T, y: T): T{
   return x + y;
 };
+function genericFunctions2<T extends string, F extends number>(x: T, y: F): T{
+  return x + y;
+};
 genericFunctions(1,2);
 genericFunctions('1','2');
 genericFunctions(true, false); // generic T 는 string | number이기 때문에 Boolean이 들어올 수 없다.
+genericFunctions2('1', 2);
+genericFunctions2(1, 2); //
+
+// generic을 제한하는 다양한 방법
+// <T extends {...}>
+// <T extends any[]>
+// <T extends (...args: any) => any>
+// <T extends abstract new (...args: any) => any>
